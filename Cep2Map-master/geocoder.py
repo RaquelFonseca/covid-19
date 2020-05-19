@@ -26,7 +26,7 @@ def main(cep):
 
     except Exception as e: 
         print(e)
-        retorno  =  ["Nan","Nan","Nan","Nan"]
+        retorno  =  [str(cep), "Nan","Nan","Nan","Nan"]
         print("Não é possivel pela Api dos Correios Associar um endereço a este CEP")
         return retorno 
     
@@ -41,7 +41,9 @@ def saveCsv():
     # do proprio site juntamente com a API , alguns ceps nao estão associados á endereços, ou seja
     # sao ceps vazios , podendo invalidar nossa consulta por cordenadas. Isto já foi tratado por meio
     # dos comandos try except.
-        for i in range(58400001, 58401000):
+    #  
+    # numero maximo 58449999
+        for i in range(58401237, 58402237):
             cep = str(i)
             info = main(cep)
             info_toDic = {'Cep': info[0] ,'Endereço': info[1], 'Lat': info[2], 'Lng': info[3]}
